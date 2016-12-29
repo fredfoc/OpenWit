@@ -22,4 +22,6 @@ DerivedData
 
 # CocoaPods
 Pods
-AppDelegate.swift
+
+
+Example/OpenWit/AppDelegate.swift
