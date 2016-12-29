@@ -16,8 +16,7 @@ This library is a first version where you can analyse a message and converse (sp
 You can find some informations about how the Wit application is structured in the WitData folder.
 
 Those tests are not really sexy but they work and that was the first intent of this version. Better things soon.
-<img src="WitData/test_converse.png" width="150">
-![Test Converse](WitData/test_converse.png | width=150) ![Test Message](WitData/test_message.png | width=150)
+<img src="WitData/test_converse.png" width="250"> <img src="WitData/test_message.png" width="250">
 
 ## Example
 
