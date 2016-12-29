@@ -13,6 +13,12 @@ Wit© is an amazing NLP api where you can define stories (at the time of this wr
 
 This library is a first version where you can analyse a message and converse (speech is actually not fully implemented but should be soon). It requires Moya and ObjectMapper.
 
+You can find some informations about how the Wit application is structured in the WitData folder.
+
+Those tests are not really sexy but they work and that was the first intent of this version. Better things soon.
+
+![Test Converse](WitData/test_converse.png?raw=true "Test Converse") ![Test Message](WitData/test_message.png?raw=true "Test Converse")
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first. You can find first attemps in ViewController.swift
