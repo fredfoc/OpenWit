@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'OpenWit_Example' do
+  pod 'OpenWit', :path => '../'
+
+  target 'OpenWit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
