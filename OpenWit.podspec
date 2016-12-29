@@ -25,7 +25,7 @@ It requires Moya and ObjectMapper.
   s.source           = { :git => 'https://github.com/fredfoc/OpenWit.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/FredFauquette'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'OpenWit/Classes/**/*'
   

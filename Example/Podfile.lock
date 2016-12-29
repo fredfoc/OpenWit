@@ -12,7 +12,7 @@ PODS:
     - Result (~> 3.0)
   - ObjectMapper (2.2.1)
   - OpenWit (0.1.0):
-    - Moya-ObjectMapper
+    - Moya-ObjectMapper (= 2.2.1)
   - Result (3.1.0)
 
 DEPENDENCIES:
@@ -27,7 +27,7 @@ SPEC CHECKSUMS:
   Moya: a29e2503a0c5067d462ba2f07cc6b6b1f3fc172d
   Moya-ObjectMapper: b0d3d84d5f771044cc592af02b04a7bb2839b878
   ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
-  OpenWit: b84c3f4a68775f56dbd337b2b044257c76bbf288
+  OpenWit: 6504cfd9c3bb147c9d51eefa9ae539951a3351a6
   Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
 
 PODFILE CHECKSUM: 8b2d242a77b0957066220823015f88c6c4cbb856
