@@ -17,7 +17,7 @@ You can find some informations about how the Wit application is structured in th
 
 Those tests are not really sexy but they work and that was the first intent of this version. Better things soon.
 
-![Test Converse](WitData/test_converse.png?raw=true "Test Converse") ![Test Message](WitData/test_message.png?raw=true "Test Converse")
+![Test Converse](WitData/test_converse.png? | width=150) ![Test Message](WitData/test_message.png?raw=true | width=150)
 
 ## Example
 
