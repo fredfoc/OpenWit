@@ -34,13 +34,16 @@ class OpenWitServiceManager {
         manager.startRequestsImmediately = false
         
         provider = MoyaProvider(endpointClosure: { (target: OpenWitService) -> Endpoint<OpenWitService> in
-            var urlParams: [String:String]?
+            var url = target.baseURL.appendingPathComponent(target.path).absoluteString
+            
+            var urlParams: [String: String]?
             switch target {
             case .speech(let apiVersion, _, _, _, _, let context):
                 urlParams = ["version": apiVersion]
                 if let contextString = context?.toJSONString() {
                     urlParams?["context"] = contextString
                 }
+                
             case .converseMessage(let apiVersion, let message, let sessionId, _):
                 urlParams = ["version": apiVersion,
                              "session_id": sessionId,
@@ -54,10 +57,12 @@ class OpenWitServiceManager {
             default:
                 break
             }
-            var url = target.baseURL.appendingPathComponent(target.path).absoluteString
+            
+            
             if let urlParams = urlParams {
-                url += "?" + urlParams.urlEncoded
+                url = url.updateUrlWithParams(urlParams: urlParams)
             }
+            
             var endPoint = Endpoint<OpenWitService>(url: url,
                 sampleResponseClosure: {EndpointSampleResponse.networkResponse(200, target.sampleData)},
                 method: target.method,
@@ -99,17 +104,26 @@ class OpenWitServiceManager {
             },
                                 stubClosure: stubClosure,
                                 manager: manager)
-    }    
+    }
+    
+    
     
 }
 
-extension Dictionary where Key: CustomStringConvertible, Value: CustomStringConvertible {
-    var urlEncoded: String {
-        return String(
-            map{
-                ("&" + $0.key.description + "=" + $0.value.description).addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
-                }.reduce("", +).characters.dropFirst())
+extension String {
+    fileprivate func updateUrlWithParams(urlParams: [String:String]) -> String {
+        guard let mainURL = URL(string: self) else {
+            return self
+        }
+        var urlRequest = URLRequest(url: mainURL)
+        urlRequest.httpMethod = "GET"
+        guard let newUrlRequest = try? Alamofire.URLEncoding.methodDependent.encode(urlRequest, with: urlParams), let encodedUrl = newUrlRequest.url else {
+            return self
+        }
+        return encodedUrl.absoluteString
     }
 }
+
+
 
 

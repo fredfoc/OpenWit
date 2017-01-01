@@ -38,24 +38,24 @@ struct ShopListEntity: Mappable, OpenWitGenericEntityModelProtocol {
 /// a custom enity defined as an answer
 struct AddShopItemAnswerModel: Mappable {
     
-    var missingShopItem: String?
-    var missingShopList: String?
+    var shopListAlone: String?
+    var shopItemAlone: String?
     var missingAll: Bool?
     var allOk: String?
     
     public init?(map: Map) {}
     
     mutating public func mapping(map: Map) {
-        missingShopItem          <- map["missingShopItem"]
-        missingShopList                <- map["missingShopList"]
+        shopListAlone          <- map["shopListAlone"]
+        shopItemAlone                <- map["shopItemAlone"]
         missingAll               <- map["missingAll"]
         allOk           <- map["allOk"]
     }
     
-    init(allOk: String?, missingShopItem: String?, missingShopList: String?, missingAll: Bool?) {
+    init(allOk: String?, shopListAlone: String?, shopItemAlone: String?, missingAll: Bool?) {
         self.allOk = allOk
-        self.missingShopItem = missingShopItem
-        self.missingShopList = missingShopList
+        self.shopListAlone = shopListAlone
+        self.shopItemAlone = shopItemAlone
         self.missingAll = missingAll
     }
 }
@@ -305,23 +305,23 @@ class ViewController: UIViewController {
         let addShopItemAnswerModel: AddShopItemAnswerModel
         if let shopItem =  converse.shopItem, let shopList = converse.shopList {
             addShopItemAnswerModel = AddShopItemAnswerModel(allOk: (shopItem.value ?? "strange product") +  " ajouté à " + (shopList.value ?? "strange list"),
-                                                            missingShopItem: nil,
-                                                            missingShopList: nil,
+                                                            shopListAlone: nil,
+                                                            shopItemAlone: nil,
                                                             missingAll: nil)
         } else if let shopItem =  converse.shopItem {
             addShopItemAnswerModel = AddShopItemAnswerModel(allOk: nil,
-                                                            missingShopItem: nil,
-                                                            missingShopList: shopItem.value,
+                                                            shopListAlone: nil,
+                                                            shopItemAlone: shopItem.value,
                                                             missingAll: nil)
         } else if let shopList = converse.shopList {
             addShopItemAnswerModel = AddShopItemAnswerModel(allOk: nil,
-                                                            missingShopItem: shopList.value,
-                                                            missingShopList: nil,
+                                                            shopListAlone: shopList.value,
+                                                            shopItemAlone: nil,
                                                             missingAll: nil)
         } else {
             addShopItemAnswerModel = AddShopItemAnswerModel(allOk: nil,
-                                                            missingShopItem: nil,
-                                                            missingShopList: nil,
+                                                            shopListAlone: nil,
+                                                            shopItemAlone: nil,
                                                             missingAll: true)
         }
         OpenWit.sharedInstance.conversationAction(addShopItemAnswerModel,

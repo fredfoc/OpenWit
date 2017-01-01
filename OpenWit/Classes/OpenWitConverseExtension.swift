@@ -23,18 +23,13 @@ extension OpenWit {
             return
         }
         
-        guard let encodedMessage = message.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-            completion(OpenWitResult(failure: OpenWitError.messageNotEncodedCorrectly))
-            return
-        }
-        
-        guard encodedMessage.isNotTooLong else {
+        guard message.isNotTooLong else {
             completion(OpenWitResult(failure: OpenWitError.messageTooLong))
             return
         }
         
         _ = serviceManager.provider.requestObject(OpenWitService.converseMessage(apiVersion: apiVersion,
-                                                                              message: encodedMessage,
+                                                                              message: message,
                                                                               sessionId: sessionId,
                                                                               context: context),
                                                   completion: completion)

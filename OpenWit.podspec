@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'OpenWit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'swift framework for Wit© HTTP API.'
   s.description      = <<-DESC
 This Pod is an intent to get a swift framework for Wit.ai© HTTP API.

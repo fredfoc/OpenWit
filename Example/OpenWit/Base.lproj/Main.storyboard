@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="jvd-tL-c4H">
             <objects>
-                <viewController id="kwu-hO-p5U" customClass="ViewController" customModule="OpenWit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kwu-hO-p5U" customClass="ViewController" customModule="OpenWit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6cb-oa-t42"/>
                         <viewControllerLayoutGuide type="bottom" id="ucT-s2-TSr"/>
@@ -58,7 +58,7 @@
                                     <action selector="startConversation:" destination="kwu-hO-p5U" eventType="touchUpInside" id="gX1-2D-Mk0"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Créer la liste d'Alice" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dfm-eW-kBE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ajouter des bananes à la liste principale" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dfm-eW-kBE">
                                 <rect key="frame" x="5" y="320" width="365" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="sUC-oo-7dH"/>
