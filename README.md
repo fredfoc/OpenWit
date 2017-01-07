@@ -28,12 +28,13 @@ You can find some informations about how the Wit application is structured in th
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first. You can find first attemps in ViewController.swift
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-Configure your WIT App:
-<img src="WitData/addShopItem.png" width="250">
+###### Configure your WIT App:
 
-in XCode:
+<img src="WitData/addShopItem.png" width="400">
+
+###### in XCode:
 
 Setup OpenWit sharedInstance with your own access tokens (generally in AppDelegate)
 
