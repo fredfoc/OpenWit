@@ -15,12 +15,80 @@ This library is a first version where you can analyse a message and converse (sp
 
 You can find some informations about how the Wit application is structured in the WitData folder.
 
-Those tests are not really sexy but they work and that was the first intent of this version. Better things soon.
-<img src="WitData/test_converse.png" width="250"> <img src="WitData/test_message.png" width="250">
+<img src="WitData/start_screen.png" width="250">
+
+###### Converse with WIT API:
+<img src="WitData/converse_1.png" width="250"> <img src="WitData/converse_2.png" width="250"> <img src="WitData/converse_3.png" width="250">
+
+###### Message with WIT API:
+<img src="WitData/test_message.png" width="250">
+
+###### Entities:
+<img src="WitData/entities.png" width="250">
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first. You can find first attemps in ViewController.swift
+
+Configure your WIT App:
+<img src="WitData/addShopItem.png" width="250">
+
+in XCode:
+
+Setup OpenWit sharedInstance with your own access tokens (generally in AppDelegate)
+
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    // Override point for customization after application launch.
+
+    OpenWit.sharedInstance.WITTokenAcces = "WIT Client Token"
+    OpenWit.sharedInstance.WITServerTokenAcces = "WIT Server Token"
+    return true
+}
+```
+
+Create a model if needed (Custom entity in Wit)
+
+```swift
+/// a custom entity defined in Wit
+struct ShopItemEntity: Mappable {
+    static var entityId = "shopItem"
+
+    var suggested: Bool = false
+    var confidence: Float?
+    var type: String?
+    var value: String?
+
+    public init?(map: Map) {}
+
+    mutating public func mapping(map: Map) {
+        confidence          <- map[OpenWitJsonKey.confidence.rawValue]
+        type                <- map[OpenWitJsonKey.type.rawValue]
+        value               <- map[OpenWitJsonKey.mainValue.rawValue]
+        suggested           <- map[OpenWitJsonKey.suggested.rawValue]
+    }
+}
+```
+Launch a request using method in OpenWit
+
+```swift
+OpenWit
+    .sharedInstance
+    .message(message,
+    messageId: nil,
+    threadId: nil) {[unowned self] result in
+        switch result {
+            case .success(let message):
+                /// Your logic should start here... :-)
+                /// intents are generic entities so they are built in
+                self.printResult(message.intents?.description ?? "no intent", clearResult: true)
+                /// shopItems are custom entities
+                self.printResult(message.shopItems?.description ?? "no shopItem")
+            case .failure(let error):
+                print(error)
+        }
+    }
+```
 
 ## Requirements
 
