@@ -1,10 +1,13 @@
 //
-//  ViewController.swift
+//  VocalConversationViewController.swift
 //  OpenWit
 //
-//  Created by fauquette fred on 12/29/2016.
-//  Copyright © 2016 Fred Fauquette. All rights reserved.
+//  Created by fauquette fred on 7/01/17.
+//  Copyright © 2017 CocoaPods. All rights reserved.
 //
+
+import Foundation
+
 
 import UIKit
 import ObjectMapper
@@ -12,7 +15,27 @@ import Speech
 import OpenWit
 
 
-class ViewController: UIViewController {
+
+
+class VocalConversationViewController: UIViewController {
+    
+    @IBOutlet var textView : UITextView!
+    
+    @IBOutlet var recordButton : UIButton!
+    
+    // MARK:- some stuff for speechrecognition
+    
+    // MARK: Properties
+    
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "fr-FR"))!
+    
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    
+    private var recognitionTask: SFSpeechRecognitionTask?
+    
+    private let audioEngine = AVAudioEngine()
+    
+    // MARK: lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,21 +72,21 @@ class ViewController: UIViewController {
     
     
     
-    // MARK:- some stuff for speechrecognition
+    @IBAction func recordButtonTapped() {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            recordButton.isEnabled = false
+            recordButton.setTitle("Stopping", for: .disabled)
+        } else {
+            try! startRecording()
+            recordButton.setTitle("Stop recording", for: [])
+        }
+    }
     
-    // MARK: Properties
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "fr-FR"))!
+    // MARK: private methods
     
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    
-    private var recognitionTask: SFSpeechRecognitionTask?
-    
-    private let audioEngine = AVAudioEngine()
-    
-    @IBOutlet var textView : UITextView!
-    
-    @IBOutlet var recordButton : UIButton!
     
     var file: AVAudioFile?
     
@@ -170,26 +193,12 @@ class ViewController: UIViewController {
         return  URL(fileURLWithPath: path)
     }
     
-    @IBAction func recordButtonTapped() {
-        if audioEngine.isRunning {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            recordButton.isEnabled = false
-            recordButton.setTitle("Stopping", for: .disabled)
-        } else {
-            try! startRecording()
-            recordButton.setTitle("Stop recording", for: [])
-        }
-    }
-    
-    
-    
     private func printResult(_ str: String, clearResult: Bool = false) {
         textView.text = clearResult ? str : textView.text + "\n" + str
     }
 }
 
-extension ViewController: SFSpeechRecognizerDelegate {
+extension VocalConversationViewController: SFSpeechRecognizerDelegate {
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             recordButton.isEnabled = true
@@ -200,15 +209,3 @@ extension ViewController: SFSpeechRecognizerDelegate {
         }
     }
 }
-
-extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return true
-    }
-}
-
-
-
-
-

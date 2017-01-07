@@ -15,6 +15,16 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		9A42FD871E20F51A004181E6 /* OpenWit+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD831E20F51A004181E6 /* OpenWit+Helper.swift */; };
+		9A42FD881E20F51A004181E6 /* MessageAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD841E20F51A004181E6 /* MessageAnalysisViewController.swift */; };
+		9A42FD891E20F51A004181E6 /* CustomModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD861E20F51A004181E6 /* CustomModels.swift */; };
+		9A42FD8B1E20FB88004181E6 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD8A1E20FB88004181E6 /* RootViewController.swift */; };
+		9A42FD8D1E20FC36004181E6 /* ConversationAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD8C1E20FC36004181E6 /* ConversationAnalysisViewController.swift */; };
+		9A42FD8F1E210137004181E6 /* AllEntitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD8E1E210137004181E6 /* AllEntitiesViewController.swift */; };
+		9A42FD911E21037F004181E6 /* VocalConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD901E21037F004181E6 /* VocalConversationViewController.swift */; };
+		9A42FD931E2103F6004181E6 /* CustomConverseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD921E2103F6004181E6 /* CustomConverseModels.swift */; };
+		9A42FD961E210478004181E6 /* Date+OpenWit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD951E210478004181E6 /* Date+OpenWit.swift */; };
+		9A42FD981E2106AB004181E6 /* String+OpenWit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD971E2106AB004181E6 /* String+OpenWit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +53,16 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		84E60386BDB28B8AB4284183 /* Pods-OpenWit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenWit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenWit_Example/Pods-OpenWit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		9A42FD831E20F51A004181E6 /* OpenWit+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OpenWit+Helper.swift"; sourceTree = "<group>"; };
+		9A42FD841E20F51A004181E6 /* MessageAnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageAnalysisViewController.swift; sourceTree = "<group>"; };
+		9A42FD861E20F51A004181E6 /* CustomModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModels.swift; sourceTree = "<group>"; };
+		9A42FD8A1E20FB88004181E6 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		9A42FD8C1E20FC36004181E6 /* ConversationAnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationAnalysisViewController.swift; sourceTree = "<group>"; };
+		9A42FD8E1E210137004181E6 /* AllEntitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEntitiesViewController.swift; sourceTree = "<group>"; };
+		9A42FD901E21037F004181E6 /* VocalConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocalConversationViewController.swift; sourceTree = "<group>"; };
+		9A42FD921E2103F6004181E6 /* CustomConverseModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomConverseModels.swift; sourceTree = "<group>"; };
+		9A42FD951E210478004181E6 /* Date+OpenWit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+OpenWit.swift"; sourceTree = "<group>"; };
+		9A42FD971E2106AB004181E6 /* String+OpenWit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+OpenWit.swift"; sourceTree = "<group>"; };
 		DC2010ADEEBDA10505BA069C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DCA121FB14A58E48F9513C4D /* Pods-OpenWit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenWit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenWit_Example/Pods-OpenWit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F267C389F503022A26CF4F5C /* OpenWit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OpenWit.podspec; path = ../OpenWit.podspec; sourceTree = "<group>"; };
@@ -102,6 +122,7 @@
 		607FACD21AFB9204008FA782 /* Example for OpenWit */ = {
 			isa = PBXGroup;
 			children = (
+				9A42FD811E20F51A004181E6 /* Examples */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -146,6 +167,39 @@
 				FBD4E54A388E260550BA6CCE /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		9A42FD811E20F51A004181E6 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				9A42FD821E20F51A004181E6 /* Extensions */,
+				9A42FD851E20F51A004181E6 /* Models */,
+				9A42FD841E20F51A004181E6 /* MessageAnalysisViewController.swift */,
+				9A42FD8A1E20FB88004181E6 /* RootViewController.swift */,
+				9A42FD8C1E20FC36004181E6 /* ConversationAnalysisViewController.swift */,
+				9A42FD8E1E210137004181E6 /* AllEntitiesViewController.swift */,
+				9A42FD901E21037F004181E6 /* VocalConversationViewController.swift */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		9A42FD821E20F51A004181E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9A42FD831E20F51A004181E6 /* OpenWit+Helper.swift */,
+				9A42FD951E210478004181E6 /* Date+OpenWit.swift */,
+				9A42FD971E2106AB004181E6 /* String+OpenWit.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9A42FD851E20F51A004181E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A42FD861E20F51A004181E6 /* CustomModels.swift */,
+				9A42FD921E2103F6004181E6 /* CustomConverseModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A040D4FAD65105BB3A3BA06A /* Pods */ = {
@@ -363,7 +417,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				9A42FD8D1E20FC36004181E6 /* ConversationAnalysisViewController.swift in Sources */,
+				9A42FD961E210478004181E6 /* Date+OpenWit.swift in Sources */,
+				9A42FD981E2106AB004181E6 /* String+OpenWit.swift in Sources */,
+				9A42FD871E20F51A004181E6 /* OpenWit+Helper.swift in Sources */,
+				9A42FD8B1E20FB88004181E6 /* RootViewController.swift in Sources */,
+				9A42FD881E20F51A004181E6 /* MessageAnalysisViewController.swift in Sources */,
+				9A42FD891E20F51A004181E6 /* CustomModels.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				9A42FD8F1E210137004181E6 /* AllEntitiesViewController.swift in Sources */,
+				9A42FD911E21037F004181E6 /* VocalConversationViewController.swift in Sources */,
+				9A42FD931E2103F6004181E6 /* CustomConverseModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

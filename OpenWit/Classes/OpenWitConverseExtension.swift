@@ -17,7 +17,10 @@ import ObjectMapper
 extension OpenWit {
     
     
-    public func conversationMessage(_ message: String, sessionId: String, context: Mappable? = nil, completion: @escaping (_ result: OpenWitResult<OpenWitConverseModel, OpenWitError>) -> ()) {
+    public func conversationMessage(_ message: String,
+                                    sessionId: String,
+                                    context: Mappable? = nil,
+                                    completion: @escaping (_ result: OpenWitResult<OpenWitConverseModel, OpenWitError>) -> ()) {
         guard let serviceManager = try? OpenWitServiceManager(WitToken: WITTokenAcces, serverToken: WITServerTokenAcces, isMocked: isMocked) else {
             completion(OpenWitResult(failure: OpenWitError.tokenIsUndefined))
             return
@@ -35,7 +38,10 @@ extension OpenWit {
                                                   completion: completion)
     }
     
-    public func conversationAction(_ action: Mappable, sessionId: String, context: Mappable? = nil, completion: @escaping (_ result: OpenWitResult<OpenWitConverseModel, OpenWitError>) -> ()) {
+    public func conversationAction(_ action: Mappable,
+                                   sessionId: String,
+                                   context: Mappable? = nil,
+                                   completion: @escaping (_ result: OpenWitResult<OpenWitConverseModel, OpenWitError>) -> ()) {
         guard let serviceManager = try? OpenWitServiceManager(WitToken: WITTokenAcces, serverToken: WITServerTokenAcces, isMocked: isMocked) else {
             completion(OpenWitResult(failure: OpenWitError.tokenIsUndefined))
             return
