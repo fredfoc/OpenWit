@@ -13,6 +13,7 @@ import UIKit
 import ObjectMapper
 import Speech
 import OpenWit
+import AVFoundation
 
 
 
@@ -20,8 +21,12 @@ import OpenWit
 class VocalConversationViewController: UIViewController {
     
     @IBOutlet var textView : UITextView!
-    
+    @IBOutlet var userResultLabel : UILabel!
     @IBOutlet var recordButton : UIButton!
+    
+    private let conversationManager = OpenWitConversationManager()
+    
+    private var conversationWasStarted = false
     
     // MARK:- some stuff for speechrecognition
     
@@ -34,6 +39,10 @@ class VocalConversationViewController: UIViewController {
     private var recognitionTask: SFSpeechRecognitionTask?
     
     private let audioEngine = AVAudioEngine()
+    
+    private let synth = AVSpeechSynthesizer()
+    
+    private var WitResponse: String?
     
     // MARK: lifecycle
     
@@ -70,6 +79,24 @@ class VocalConversationViewController: UIViewController {
         }
     }
     
+    func talk(_ message: String) {
+        DispatchQueue.main.async {
+            let utterance = AVSpeechUtterance(string: message)
+            utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+            let lang = "fr-FR"
+            utterance.voice = AVSpeechSynthesisVoice(language: lang)
+            utterance.volume = 1
+            self.synth.speak(utterance)
+        }
+    }
+    
+    
+    @IBAction func startConversation() {
+        textView.text = ""
+        conversationManager.startConversation()
+        conversationWasStarted = true
+        userResultLabel.text = "Now hit startRecording..."
+    }
     
     
     @IBAction func recordButtonTapped() {
@@ -91,7 +118,10 @@ class VocalConversationViewController: UIViewController {
     var file: AVAudioFile?
     
     private func startRecording() throws {
-        
+        userResultLabel.text = ""
+        if !conversationWasStarted {
+            startConversation()
+        }
         // Cancel the previous task if it's running.
         if let recognitionTask = recognitionTask {
             recognitionTask.cancel()
@@ -99,7 +129,7 @@ class VocalConversationViewController: UIViewController {
         }
         
         let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(AVAudioSessionCategoryRecord)
+        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
         try audioSession.setMode(AVAudioSessionModeMeasurement)
         try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         
@@ -113,11 +143,11 @@ class VocalConversationViewController: UIViewController {
         
         // A recognition task represents a speech recognition session.
         // We keep a reference to the task so that it can be cancelled.
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [unowned self] (result, error) in
             var isFinal = false
             
             if let result = result {
-                self.textView.text = result.bestTranscription.formattedString
+                self.userResultLabel.text = result.bestTranscription.formattedString
                 isFinal = result.isFinal
             }
             
@@ -132,50 +162,20 @@ class VocalConversationViewController: UIViewController {
                 self.recordButton.setTitle("Start Recording", for: [])
                 
                 if let result = result {
-                    OpenWit
-                        .sharedInstance
-                        .message(result.bestTranscription.formattedString,
-                                 messageId: nil,
-                                 threadId: nil) {[unowned self] result in
-                                    switch result {
-                                    case .success(let message):
-                                        self.printResult(message.intents?.description ?? "no intent", clearResult: true)
-                                        /// shopItems are custom entities
-                                        self.printResult(message.shopItems?.description ?? "no shopItem")
-                                        /// shopLists are custom entities
-                                        self.printResult(message.shopLists?.description ?? "no shopList")
-                                    case .failure(let error):
-                                        print(error)
-                                    }
+                    self.userResultLabel.text = result.bestTranscription.formattedString
+                    self.printResult("You : \(result.bestTranscription.formattedString)")
+                    self.conversationManager.converse(result.bestTranscription.formattedString) {[unowned self] (response) in
+                        self.printResult("WIT : \(response)")
+                        self.talk(response)
                     }
                 }
-                
-                if let data = try? Data(contentsOf: self.URLFor(filename: "my_file.caf")){
-                    OpenWit.sharedInstance.speech(audioFile: data,
-                                                  audioFormat: kAudioFormatLinearPCM) { result in
-                                                    switch result {
-                                                    case .success(let message):
-                                                        /// Your logic should start here... :-)
-                                                        /// intents are generic entities so they are built in
-                                                        print(message.intents ?? "no intent")
-                                                        /// shopItems are custom entities
-                                                        print(message.shopItems ?? "no shopItem")
-                                                    case .failure(let error):
-                                                        print(error)
-                                                    }
-                    }
-                }
-                
                 
             }
         }
         
         
-        file = try! AVAudioFile(forWriting: URLFor(filename: "my_file.caf"), settings: inputNode.inputFormat(forBus: 0).settings)
-        print(inputNode.inputFormat(forBus: 0).settings)
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
-            try! self.file?.write(from: buffer)
             self.recognitionRequest?.append(buffer)
         }
         
@@ -183,7 +183,7 @@ class VocalConversationViewController: UIViewController {
         
         try audioEngine.start()
         
-        textView.text = "(Go ahead, I'm listening)"
+        printResult("(Go ahead, I'm listening)")
     }
     
     private func URLFor(filename: String) -> URL {
@@ -193,8 +193,8 @@ class VocalConversationViewController: UIViewController {
         return  URL(fileURLWithPath: path)
     }
     
-    private func printResult(_ str: String, clearResult: Bool = false) {
-        textView.text = clearResult ? str : textView.text + "\n" + str
+    private func printResult(_ str: String) {
+        textView.text = textView.text + "\n" + str
     }
 }
 

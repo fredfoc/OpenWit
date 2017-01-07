@@ -25,6 +25,8 @@
 		9A42FD931E2103F6004181E6 /* CustomConverseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD921E2103F6004181E6 /* CustomConverseModels.swift */; };
 		9A42FD961E210478004181E6 /* Date+OpenWit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD951E210478004181E6 /* Date+OpenWit.swift */; };
 		9A42FD981E2106AB004181E6 /* String+OpenWit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD971E2106AB004181E6 /* String+OpenWit.swift */; };
+		9A42FD9B1E210A9B004181E6 /* OpenWitConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42FD9A1E210A9B004181E6 /* OpenWitConversationManager.swift */; };
+		9A42FD9D1E21189A004181E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A42FD9C1E21189A004181E6 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		9A42FD921E2103F6004181E6 /* CustomConverseModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomConverseModels.swift; sourceTree = "<group>"; };
 		9A42FD951E210478004181E6 /* Date+OpenWit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+OpenWit.swift"; sourceTree = "<group>"; };
 		9A42FD971E2106AB004181E6 /* String+OpenWit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+OpenWit.swift"; sourceTree = "<group>"; };
+		9A42FD9A1E210A9B004181E6 /* OpenWitConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenWitConversationManager.swift; path = Manager/OpenWitConversationManager.swift; sourceTree = "<group>"; };
+		9A42FD9C1E21189A004181E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DC2010ADEEBDA10505BA069C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DCA121FB14A58E48F9513C4D /* Pods-OpenWit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenWit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenWit_Example/Pods-OpenWit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F267C389F503022A26CF4F5C /* OpenWit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OpenWit.podspec; path = ../OpenWit.podspec; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A42FD9D1E21189A004181E6 /* AVFoundation.framework in Frameworks */,
 				42FD90FB353C548A7868E5FE /* Pods_OpenWit_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +97,7 @@
 		3915EEA22B6008F4DB0BF5A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A42FD9C1E21189A004181E6 /* AVFoundation.framework */,
 				1CA732E9D846F959BA4CCB4C /* Pods_OpenWit_Example.framework */,
 				072C70FFE6706B5F631F993B /* Pods_OpenWit_Tests.framework */,
 			);
@@ -172,6 +178,7 @@
 		9A42FD811E20F51A004181E6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				9A42FD991E210A80004181E6 /* Manager */,
 				9A42FD821E20F51A004181E6 /* Extensions */,
 				9A42FD851E20F51A004181E6 /* Models */,
 				9A42FD841E20F51A004181E6 /* MessageAnalysisViewController.swift */,
@@ -200,6 +207,14 @@
 				9A42FD921E2103F6004181E6 /* CustomConverseModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9A42FD991E210A80004181E6 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9A42FD9A1E210A9B004181E6 /* OpenWitConversationManager.swift */,
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 		A040D4FAD65105BB3A3BA06A /* Pods */ = {
@@ -274,6 +289,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 69B39F3M5G;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -419,6 +435,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				9A42FD8D1E20FC36004181E6 /* ConversationAnalysisViewController.swift in Sources */,
 				9A42FD961E210478004181E6 /* Date+OpenWit.swift in Sources */,
+				9A42FD9B1E210A9B004181E6 /* OpenWitConversationManager.swift in Sources */,
 				9A42FD981E2106AB004181E6 /* String+OpenWit.swift in Sources */,
 				9A42FD871E20F51A004181E6 /* OpenWit+Helper.swift in Sources */,
 				9A42FD8B1E20FB88004181E6 /* RootViewController.swift in Sources */,
@@ -587,6 +604,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B15DDE1ACDD2D060A905866 /* Pods-OpenWit_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 69B39F3M5G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -607,6 +625,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2FE422DFAE28E8983C99BC5F /* Pods-OpenWit_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 69B39F3M5G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

@@ -368,7 +368,7 @@
                                 </constraints>
                                 <state key="normal" title="Start Conversation"/>
                                 <connections>
-                                    <action selector="startConversation:" destination="gie-GF-XGY" eventType="touchUpInside" id="JTJ-z3-ha8"/>
+                                    <action selector="startConversation" destination="gie-GF-XGY" eventType="touchUpInside" id="fFP-ft-QjW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kow-3d-d2q">
@@ -377,6 +377,9 @@
                                     <constraint firstAttribute="height" constant="30" id="0de-jq-MSO"/>
                                 </constraints>
                                 <state key="normal" title="Start Recording"/>
+                                <connections>
+                                    <action selector="recordButtonTapped" destination="gie-GF-XGY" eventType="touchUpInside" id="VGy-Pd-pRd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwl-kH-uoD">
                                 <rect key="frame" x="9" y="545.5" width="357" height="101.5"/>
@@ -386,21 +389,33 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yRM-ej-DS3">
-                                <rect key="frame" x="5" y="161" width="365" height="374"/>
+                                <rect key="frame" x="5" y="173" width="365" height="362"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7K-uP-SnY">
+                                <rect key="frame" x="5" y="144" width="365" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="eOw-jp-C2h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="P7K-uP-SnY" firstAttribute="top" secondItem="kow-3d-d2q" secondAttribute="bottom" constant="5" id="2iI-0E-6re"/>
+                            <constraint firstItem="P7K-uP-SnY" firstAttribute="leading" secondItem="TUH-Ab-vCx" secondAttribute="leading" constant="5" id="7Fv-jG-mXo"/>
+                            <constraint firstItem="yRM-ej-DS3" firstAttribute="top" secondItem="P7K-uP-SnY" secondAttribute="bottom" constant="8" id="CAw-Oq-d1I"/>
                             <constraint firstItem="pPJ-06-MHo" firstAttribute="top" secondItem="fwl-kH-uoD" secondAttribute="bottom" constant="20" id="DQH-La-ZAd"/>
                             <constraint firstItem="kow-3d-d2q" firstAttribute="centerX" secondItem="TUH-Ab-vCx" secondAttribute="centerX" id="Hvo-3u-18N"/>
+                            <constraint firstAttribute="trailing" secondItem="P7K-uP-SnY" secondAttribute="trailing" constant="5" id="Ph6-LF-RMJ"/>
                             <constraint firstItem="yRM-ej-DS3" firstAttribute="leading" secondItem="TUH-Ab-vCx" secondAttribute="leading" constant="5" id="VyL-c9-18e"/>
                             <constraint firstItem="eOW-i9-Knh" firstAttribute="top" secondItem="DM3-7P-osi" secondAttribute="bottom" constant="10" id="W3C-8R-0C1"/>
                             <constraint firstItem="fwl-kH-uoD" firstAttribute="leading" secondItem="TUH-Ab-vCx" secondAttribute="leading" constant="9" id="mTH-uP-l9M"/>
                             <constraint firstAttribute="trailing" secondItem="fwl-kH-uoD" secondAttribute="trailing" constant="9" id="ml9-dT-CUY"/>
-                            <constraint firstItem="yRM-ej-DS3" firstAttribute="top" secondItem="kow-3d-d2q" secondAttribute="bottom" constant="22" id="o4Z-d0-gKa"/>
                             <constraint firstItem="kow-3d-d2q" firstAttribute="top" secondItem="eOW-i9-Knh" secondAttribute="bottom" constant="5" id="qBS-kp-qLe"/>
                             <constraint firstItem="fwl-kH-uoD" firstAttribute="top" secondItem="yRM-ej-DS3" secondAttribute="bottom" constant="10" id="qmE-qa-sEl"/>
                             <constraint firstItem="eOW-i9-Knh" firstAttribute="centerX" secondItem="TUH-Ab-vCx" secondAttribute="centerX" id="tON-yi-eXg"/>
@@ -409,8 +424,9 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="recordButton" destination="kow-3d-d2q" id="3gO-As-QHu"/>
+                        <outlet property="recordButton" destination="kow-3d-d2q" id="yG9-c3-rKR"/>
                         <outlet property="textView" destination="yRM-ej-DS3" id="u4o-LH-D1w"/>
+                        <outlet property="userResultLabel" destination="P7K-uP-SnY" id="d1B-wd-gDW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSb-hF-zvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
